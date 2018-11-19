@@ -14,4 +14,12 @@
 Route::get('/', 'Index\IndexController@index');
 
 
+/**
+ * 后台业务路由
+ * 后期加入auth
+ */
 Route::get('/mailAdmin', 'Admin\AdminController@index');
+
+Route::get('/index', 'Admin\Goods\ShopController@index')->name('shop.list');
+
+resource('fenlei', 'Admin\Fenlei\ClassIfIcaTionController');

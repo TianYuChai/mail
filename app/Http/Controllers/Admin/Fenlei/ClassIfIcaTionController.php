@@ -5,6 +5,7 @@ use App\Http\Models\Admin\Fenlei\JnShopTypeModel;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Service\Admin\Fenlei\ClassIflcaTionService;
 
 class ClassIfIcaTionController extends Controller
 {
@@ -16,28 +17,31 @@ class ClassIfIcaTionController extends Controller
     public function index()
     {
        $items = JnShopTypeModel::paginate(10);
-       dd($items);
+       
+       return view('Admin.fenlei.fenlei_list', compact('items'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 添加分类
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $items = JnShopTypeModel::where('pid', 0)->get();
+        return view('Admin.fenlei.fenlei_create', compact('items'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 分类业务处理
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        dd('11');
+        dd($request->all());
     }
 
     /**
